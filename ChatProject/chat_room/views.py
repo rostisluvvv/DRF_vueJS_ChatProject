@@ -21,3 +21,15 @@ class Dialog(APIView):
         chats = Chat.objects.filter(room=room)
         serializer = ChatSerializers(chats, many=True)
         return Response({'data': serializer.data})
+
+    def post(self, request):
+        # rooms = request.data.get('room')
+        dialog = ChatSerializers(data=request.data)
+
+        if dialog.is_valid():
+            dialog.save(user=request.user)
+            return Response({'status': 'Add'})
+
+        else:
+            return Response({'status': 'Error'})
+
