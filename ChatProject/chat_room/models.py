@@ -4,13 +4,13 @@ from django.contrib.auth.models import User
 
 
 class Room(models.Model):
-    creater = models.ForeignKey(User,
+    creator = models.ForeignKey(User,
                                 verbose_name='Создатель комнаты',
                                 on_delete=models.CASCADE)
     invited = models.ManyToManyField(User,
                                      verbose_name='участники',
                                      related_name='invited_user')
-    date = models.DateField('дата создания', auto_now_add=True)
+    date = models.DateTimeField('дата создания', auto_now_add=True)
 
     class Meta:
         verbose_name = 'Комната чата'
