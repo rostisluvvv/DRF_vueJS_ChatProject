@@ -25,7 +25,7 @@ class Chat(models.Model):
                              verbose_name='пользователь',
                              on_delete=models.CASCADE)
     text = models.TextField('Сообщение', max_length=500)
-    date = models.DateField('дата отправки', auto_now_add=True)
+    date = models.DateTimeField('дата отправки', auto_now_add=True)
 
     class Meta:
         verbose_name = 'сообщение чат'
