@@ -6,7 +6,7 @@ from .models import Room
 from .serializers import RoomSerializers
 
 
-class Room(APIView):
+class Rooms(APIView):
 
     def get(self, request):
         rooms = Room.objects.all()
