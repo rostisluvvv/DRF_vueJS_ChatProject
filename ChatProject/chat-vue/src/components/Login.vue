@@ -31,8 +31,12 @@ export default {
           if (response.status === 400) {
             alert('Логин или пароль неверен');
           } else if (response.status === 200) {
-            alert('Авторизация успешна');
-            console.log(response);
+
+            response.json().then(data=>{
+                    alert('Авторизация успешна');
+            sessionStorage.setItem("auth_token", data.data.attributes.auth_token)
+            });
+
           }
         });
     },
